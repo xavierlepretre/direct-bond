@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DirectBond - Listing</title>
+  <base href="." />
+  <!--link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' -->
+  <link href="./app.css" rel='stylesheet' type='text/css'>
+  <script src="./app.js"></script>
+  <script src="./bundle.js"></script>
+  <script src="./directbond.js"></script>
+</head>
+<body ng-app="directBondApp" ng-controller="directBondController">
+  <h1>DirectBond</h1>
+  <h2>Listing</h2>
+
+  <table border="0.5">
+    <thead>
+      <tr>
+        <th>Issuer</th>
+        <th>ISIN</th>
+        <th>Token</th>
+        <th>Rate</th>
+        <th>Rate Calculator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="bondIssue in bondIssues">
+        <td>{{ bondIssue.issuer }}</td>
+        <td>{{ bondIssue.isin }}</td>
+        <td>{{ bondIssue.token }}</td>
+        <td>{{ bondIssue.rate }}</td>
+        <td>{{ bondIssue.rateCalculator }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td><input type="text" id="newIsin" ng-model="newIsin" placeholder="new ISIN" /></td>
+        <td><input type="text" id="newToken" ng-model="newToken" placeholder="Token address" /></td>
+        <td colspan="2"><input type="text" id="newRateCalculator" ng-model="newRateCalculator" placeholder="Rate calculator" /></td>
+        <td><button ng-click="issueBond(newIsin, newToken, newRateCalculator)">Issue</button></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div>B9lab bond token: {{b9labBond.address}}</div>
+  <div>Fixed Coupon at 5%: {{couponCalculatorFixed.address}}</div>
+
+</body>
+</html>
